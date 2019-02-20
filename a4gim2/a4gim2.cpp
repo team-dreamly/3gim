@@ -73,7 +73,7 @@ static char gWorkBuffer[256];			// Buffer for working(Mega..)
 //	@note
 //		Change at R3.1 for 3GIM
 //***************************
-int A4GS::begin(char* pin,void (*f)(int))
+int A4GS::begin(char* pin,void (*f)(time_t))
 {
 	char	version[a4gsMAX_VERSION_LENGTH+1];
 //--
@@ -205,7 +205,7 @@ int A4GS::restart(int pin)
 //		Change at R3.1 for 3GIM
 //		Change at R4.0 for 3GIM(V2)
 //***************************
-int A4GS::start(int pin,void (*f)(int))
+int A4GS::start(int pin,void (*f)(time_t))
 {
 	if (pin > 0)
 		_powerPin = pin;
