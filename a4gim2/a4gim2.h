@@ -62,7 +62,7 @@
 #define	a4gsSRV_PS					1			// Data(packet) only
 #define	a4gsSRV_CS					2			// Voice only -- @Not used R4.0
 #define	a4gsSRV_BOTH				3			// Data and voice both -- @Not used R4.0
-
+typedef void (*passing_function)(int);
 /*
 	Declare class
 */
@@ -74,11 +74,11 @@ class A4GS
 
 	// compatible methods with Arduino GSM/GPRS Shield library
 	int getStatus() { return _status; };
-	int begin(char* pin = 0,void (*f)(time_t));
+	int begin(passing_function func);
 	int begin(char* pin, uint32_t baudrate);
 	int end(void);
 	int restart(int pin = 0);
-	int start(int pin = 0,void (*f)(time_t));
+	int start(int pin, passing_function func);
 	int shutdown(void);
 		//-- This library do not use "pin" parameter, so ignore it.
 	int getIMEI(char* imei);
