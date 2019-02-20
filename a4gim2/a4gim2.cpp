@@ -73,7 +73,7 @@ static char gWorkBuffer[256];			// Buffer for working(Mega..)
 //	@note
 //		Change at R3.1 for 3GIM
 //***************************
-int A4GS::begin(char* pin)
+int A4GS::begin(char* pin,void (*f)(int))
 {
 	char	version[a4gsMAX_VERSION_LENGTH+1];
 //--
@@ -90,7 +90,7 @@ int A4GS::begin(char* pin)
 	for (n = 0; n < MAX_RETRY; n++) {
 		if (getVersion(version) == 0)
 			break;
-		delay(10);
+		(*f)(10);
 	}
 	if (n == MAX_RETRY)
 		return 1;	// NG -- Can't get version
@@ -205,7 +205,7 @@ int A4GS::restart(int pin)
 //		Change at R3.1 for 3GIM
 //		Change at R4.0 for 3GIM(V2)
 //***************************
-int A4GS::start(int pin)
+int A4GS::start(int pin,void (*f)(int))
 {
 	if (pin > 0)
 		_powerPin = pin;
@@ -222,7 +222,7 @@ int A4GS::start(int pin)
 
 	DEBUG_PRINT(">start()", "Turn on and wait for a moment..");
 
-	delay(15000);	// Wait for ready IEM
+	(*f)(15000);
 
 	DEBUG_PRINT(">start()", "IEM is available now.");
 

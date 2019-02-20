@@ -74,11 +74,11 @@ class A4GS
 
 	// compatible methods with Arduino GSM/GPRS Shield library
 	int getStatus() { return _status; };
-	int begin(char* pin = 0);
+	int begin(char* pin = 0,void (*f)(int));
 	int begin(char* pin, uint32_t baudrate);
 	int end(void);
 	int restart(int pin = 0);
-	int start(int pin = 0);
+	int start(int pin = 0,void (*f)(int));
 	int shutdown(void);
 		//-- This library do not use "pin" parameter, so ignore it.
 	int getIMEI(char* imei);
