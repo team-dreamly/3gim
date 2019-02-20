@@ -74,7 +74,7 @@ class A4GS
 
 	// compatible methods with Arduino GSM/GPRS Shield library
 	int getStatus() { return _status; };
-	int begin(passing_function func);
+	int begin();
 	int begin(char* pin, uint32_t baudrate);
 	int end(void);
 	int restart(int pin = 0);

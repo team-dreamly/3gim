@@ -73,7 +73,7 @@ static char gWorkBuffer[256];			// Buffer for working(Mega..)
 //	@note
 //		Change at R3.1 for 3GIM
 //***************************
-int A4GS::begin(passing_function func)
+int A4GS::begin()
 {
 	char	version[a4gsMAX_VERSION_LENGTH+1];
 //--
@@ -87,10 +87,10 @@ int A4GS::begin(passing_function func)
 
 	// Get iem version and check it
 	int n;
-	for (n = 0; n < MAX_RETRY; n++) {
+	for (n = 0; n < 10; n++) {
 		if (getVersion(version) == 0)
 			break;
-		(*func)(10);
+		delay(100);
 	}
 	if (n == MAX_RETRY)
 		return 1;	// NG -- Can't get version
